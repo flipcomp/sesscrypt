@@ -1,0 +1,9 @@
+\#*
+.\#*
+*.pyc
+.env
+.DS_Store
+tmp
+log/*.log
+vendor/bin
+vendor/pkg
