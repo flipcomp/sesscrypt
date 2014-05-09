@@ -1,6 +1,6 @@
 # sesscrypt
 
-**Session information encryption/decryption tool.
+**Session information encryption/decryption tool.**
 
 This small tool provides ability to securely encrypt/decrypt session information
 using AES encryption with 16, 32 or 64 byte-long keys.
@@ -38,6 +38,10 @@ Start from setting up the stack, then configure and run the app.
 5. You can install the app globally with:
 
         $ PREFIX=/usr ./scripts/install
+
+## Encryption/decryption process
+
+TODO: ...
 
 ## Contributing
 
