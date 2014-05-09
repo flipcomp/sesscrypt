@@ -27,10 +27,12 @@ Start from setting up the stack, then configure and run the app.
 
         $ ./scripts/test
 
-4. Encrypt and decrypt stuff:
+4. Encrypt something:
 
         $ bin/sesscrypt enc -k sess.key 1
         1HjqIVb2qIx+xImXzhAYm4eDGvxFuw969RfGfBmt0WCHgxr8RbsPevUXxnwZrdFgh4Ma/EW7D3r1F8Z8Ga3RYA==
+
+5. Then decrypt it:
 
         $ bin/sesscrypt dec -k sess.key 1HjqIVb2qIx+xImXzhAYm4eDGvxFuw969RfGfBmt0WCHgxr8RbsPevUXxnwZrdFgh4Ma/EW7D3r1F8Z8Ga3RYA==
         1
