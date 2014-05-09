@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+PREFIX=${PREFIX:-/usr}
+
+set -ex
+
+install -d $PREFIX/bin
+install -C -m0755 bin/sesscrypt $PREFIX/bin/sesscrypt

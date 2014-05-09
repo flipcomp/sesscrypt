@@ -1,0 +1,84 @@
+#!/usr/bin/env python
+################################################################################
+# sessdecrypt.py - A module for decrypting session information.
+#-------------------------------------------------------------------------------
+
+import sys
+import base64
+from docopt import docopt
+from commands import getoutput as sh
+from os.path import abspath, join
+from Crypto.Cipher import AES
+from Crypto import Random
+
+#-------------------------------------------------------------------------------
+
+__git_commit__  = sh("git rev-parse HEAD").strip()
+__git_status__  = sh("git status --porcelain").strip()
+__git_dirty__   = "" if __git_status__ == "" else "+CHANGES"
+__app_namet__   = "sesscrypt"
+__version__     = __git_commit__ + __git_dirty__
+__root__        = abspath(join(__file__, "../../../../"))
+
+#-------------------------------------------------------------------------------
+
+def main(args):
+    try:
+        key = open(args['--key'], 'r').read()
+    except:
+        sys.stderr.write("ERROR: Key file not found!\n")
+        exit(1)
+
+    cipher = AES.new(key)
+
+    if args['enc']:
+        x = encrypt(cipher, args['VALUE'])
+    elif args['dec']:
+        x = decrypt(cipher, args['ENCRYPTED_TEXT'])
+    else:
+        sys.stderr.write("ERROR: No action specified!\n")
+        exit(1)
+
+    if x != None:
+        print x
+
+def encrypt(cipher, value):
+    """Encrypts given value using specified cipher. Returns encrypted string.
+    """
+    return base64.b64encode(cipher.encrypt(str(value).ljust(64, '-')))
+
+def decrypt(cipher, enc):
+    """Decrypts encrypted text from enc using given using specified cipher.
+    Returns decrupted string.
+    """
+    try:
+        return cipher.decrypt(base64.b64decode(enc)).strip('-')
+    except:
+        pass
+
+#-------------------------------------------------------------------------------
+
+__doc__ = """Session information encryptor/decryptor.
+
+Usage:
+  sesscrypt enc [options] VALUE
+  sesscrypt dec [options] ENCRYPTED_TEXT
+  sesscrypt -h | --help
+  sesscrypt --version
+
+Arguments:
+  VALUE           For encryption, the value to be encrypted.
+  ENCRYPTED_TEXT  For decryption, the string to be decrypted.
+
+Options:
+  -h, --help          Show this help screen.
+  --version           Display current version number.
+  -k, --key KEY_FILE  The path to key file. [default: ./sess.key]
+
+"""
+
+#-------------------------------------------------------------------------------
+
+if __name__ == '__main__':
+    args = docopt(__doc__, version=__version__)
+    main(args)

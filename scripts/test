@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -ex
+
+bin/sesscrypt enc -k sess.key 1 > /tmp/sesscrypt-test
+bin/sesscrypt dec -k sess.key $(cat /tmp/sesscrypt-test) > /tmp/sesscrypt-test-res
+test "$(cat /tmp/sesscrypt-test-res)" = "1"
