@@ -2,6 +2,7 @@
 .\#*
 *.pyc
 .env
+.virtual
 .DS_Store
 tmp
 log/*.log

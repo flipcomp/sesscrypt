@@ -19,22 +19,35 @@ Start from setting up the stack, then configure and run the app.
 
         $ git clone git@github.com:flipcomp/sesscrypto.git
 
-2. Install requirements:
+2. Create your virtualenv:
 
-        $ sudo ./scripts/requirements
+        $ virtualenv .virtual
 
-3. Run tests:
+   Then enter it (you'll have to repeat this one every time you come back
+   to development)
 
-        $ ./scripts/test
+        $ source .virtual/bin/activate
 
-4. Encrypt something:
+   To leave virtual environment run:
 
-        $ bin/sesscrypt enc -k sess.key 1
+        (.virtual)$ deactivate
+
+3. Install requirements:
+
+        (.virtual)$ ./scripts/requirements
+
+4. Run tests:
+
+        (.virtual)$ ./scripts/test
+
+5. Encrypt something:
+
+        (.virtual)$ bin/sesscrypt enc -k sess.key 1
         1HjqIVb2qIx+xImXzhAYm4eDGvxFuw969RfGfBmt0WCHgxr8RbsPevUXxnwZrdFgh4Ma/EW7D3r1F8Z8Ga3RYA==
 
-5. Then decrypt it:
+6. Then decrypt it:
 
-        $ bin/sesscrypt dec -k sess.key 1HjqIVb2qIx+xImXzhAYm4eDGvxFuw969RfGfBmt0WCHgxr8RbsPevUXxnwZrdFgh4Ma/EW7D3r1F8Z8Ga3RYA==
+        (.virtual)$ bin/sesscrypt dec -k sess.key 1HjqIVb2qIx+xImXzhAYm4eDGvxFuw969RfGfBmt0WCHgxr8RbsPevUXxnwZrdFgh4Ma/EW7D3r1F8Z8Ga3RYA==
         1
 
 5. You can install the app globally with:
