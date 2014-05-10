@@ -11,7 +11,7 @@ Start from setting up the stack, then configure and run the app.
 
 ### Stack
 
-1. Install Python interpreter and PIP package manager.
+1. Install Python v2.7 interpreter and PIP package manager.
 
 ### Application
 
