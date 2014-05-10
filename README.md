@@ -50,7 +50,7 @@ Start from setting up the stack, then configure and run the app.
         (.virtual)$ bin/sesscrypt dec -k sess.key 1HjqIVb2qIx+xImXzhAYm4eDGvxFuw969RfGfBmt0WCHgxr8RbsPevUXxnwZrdFgh4Ma/EW7D3r1F8Z8Ga3RYA==
         1
 
-5. You can install the app globally with:
+7. You can install the app globally with:
 
         $ PREFIX=/usr ./scripts/install
 
